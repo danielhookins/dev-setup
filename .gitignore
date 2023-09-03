@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.bash_aliases
+!.config/nvim/init.vim
+!.tmux.conf
+!.vimrc
+!setup-neovim.sh
+!setup-tmux.sh
+!textfiles/tmux.md
