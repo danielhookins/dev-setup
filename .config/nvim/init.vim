@@ -36,4 +36,5 @@ set ttyfast                 " Speed up scrolling in Vim
 " set backupdir=~/.cache/vim " Directory to store backup files.
 colorscheme slate            " set color scheme
 set number                   " show line numbers
+set autochdir                " automatically change directory to the current file
 
