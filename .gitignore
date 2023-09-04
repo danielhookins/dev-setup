@@ -4,6 +4,6 @@
 !.config/nvim/init.vim
 !.tmux.conf
 !.vimrc
-!setup-neovim.sh
+!setup-neovim.*
 !setup-tmux.sh
 !textfiles/tmux.md
