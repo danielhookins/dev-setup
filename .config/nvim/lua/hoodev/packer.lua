@@ -6,9 +6,9 @@ return require('packer').startup(function(use)
 
   -- Telescope
   use {
-  	'nvim-telescope/telescope.nvim', tag = '0.1.2',
-	-- or                            , branch = '0.1.x',
-  	requires = { {'nvim-lua/plenary.nvim'} }
+      'nvim-telescope/telescope.nvim', tag = '0.1.2',
+      -- or                            , branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   -- Tokyonight
@@ -16,7 +16,11 @@ return require('packer').startup(function(use)
 
   -- Treesitter
   use (
-  	'nvim-treesitter/nvim-treesitter',
-	{run = ':TSUpdate'}
+      'nvim-treesitter/nvim-treesitter',
+      {run = ':TSUpdate'}
   )
+
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+
 end)

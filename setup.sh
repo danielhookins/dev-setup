@@ -24,7 +24,8 @@ if [ "$OS" == "Darwin" ]; then
     brew install neovim ripgrep fd
 else
     sudo add-apt-repository ppa:neovim-ppa/stable &&\
-        sudo apt-get install -y neovim python3-neovim ripgrep fd-find gcc g++
+	    sudo apt-get update &&\
+	    sudo apt-get install -y neovim python3-neovim ripgrep fd-find gcc g++
 fi
 
 echo "Installing NodeJS"
