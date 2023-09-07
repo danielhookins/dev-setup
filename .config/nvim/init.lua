@@ -1,2 +1,1 @@
 require("hoodev")
-print("hello")

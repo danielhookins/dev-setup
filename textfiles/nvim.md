@@ -3,7 +3,7 @@
 Leader:		<space>
 
 File Explorer:	n, <leader>pv
-:w
+
 # Packer
 
 :PackerSync
