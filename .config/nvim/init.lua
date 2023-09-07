@@ -1,0 +1,2 @@
+require("hoodev")
+print("hello")
