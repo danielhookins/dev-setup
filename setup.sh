@@ -24,7 +24,7 @@ if [ "$OS" == "Darwin" ]; then
     brew install neovim ripgrep fd
 else
     sudo add-apt-repository ppa:neovim-ppa/stable &&\
-        sudo apt-get install -y neovim python3-neovim ripgrep fd-find
+        sudo apt-get install -y neovim python3-neovim ripgrep fd-find gcc
 fi
 
 echo "Installing NodeJS"
@@ -43,8 +43,13 @@ git clone https://github.com/github/copilot.vim.git \
   ~/.config/nvim/pack/github/start/copilot.vim
 echo "Github Copilot: Start Neovim and invoke :Copilot setup"
 
-echo "Installing Vim-Plug"
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-echo "Vim-Plug installed: Start Neovim and invoke :PlugInstall"
+echo "Installing Packer for Neovim"
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+echo "Installing tmux"
+if [ "$OS" == "Darwin" ]; then
+    brew install tmux
+else
+    sudo apt-get install -y tmux
+fi

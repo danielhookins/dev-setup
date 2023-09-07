@@ -1,9 +1,8 @@
 *
 !.gitignore
 !.bash_aliases
-!.config/nvim/init.vim
+!.config/nvim/*.lua
 !.tmux.conf
 !.vimrc
-!setup-neovim.*
-!setup-tmux.sh
-!textfiles/tmux.md
+!setup.*
+!textfiles/nvim.md
