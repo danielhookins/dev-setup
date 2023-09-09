@@ -24,8 +24,12 @@ return require('packer').startup(function(use)
         {run = ':TSUpdate'}
     )
 
-    -- LSP
-    use 'neovim/nvim-lspconfig'
+    -- LSP and Mason
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    }
 
     -- Git
     use 'tpope/vim-fugitive'
