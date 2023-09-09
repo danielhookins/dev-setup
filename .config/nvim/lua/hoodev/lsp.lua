@@ -17,11 +17,6 @@ require("mason-lspconfig").setup({
     },
 })
 
--- Determine the OS
-local function get_os()
-    return vim.loop.os_uname().sysname
-end
-
 -- Keybindings
 local on_attach = function(_, _)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {noremap = true, silent = true})
@@ -60,32 +55,16 @@ require("lspconfig").gopls.setup({
     },
 })
 
--- Python: Pyright
-local function get_pyright_cmd()
-    local os = get_os()
-    if os == "Windows_NT" then
-        -- Use the USERPROFILE environment variable to get the user's home directory on Windows
-        local home = vim.fn.expand("$USERPROFILE")
-        return {home .. "\\AppData\\Roaming\\npm\\pyright-langserver", "--stdio"}
-    else
-        -- For Linux and macOS
-        return {"pyright-langserver", "--stdio"}
-    end
-end
 
+-- Python: pyright
 require("lspconfig").pyright.setup({
     on_attach = on_attach,
-    cmd = get_pyright_cmd(),
     settings = {
         python = {
             analysis = {
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
             },
-            formatting = {
-                provider = "black",
-            },
         },
     },
 })
-
