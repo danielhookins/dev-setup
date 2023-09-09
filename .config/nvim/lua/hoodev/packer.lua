@@ -1,31 +1,39 @@
 if pcall(require, 'packer') then
-   require('packer').init()
+    require('packer').init()
 else
-   vim.cmd [[packadd packer.nvim]]
+    vim.cmd [[packadd packer.nvim]]
 end
 
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-  -- Telescope
-  use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.2',
-      -- or                            , branch = '0.1.x',
-      requires = { {'nvim-lua/plenary.nvim'} }
-  }
+    -- Telescope
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.2',
+        -- or                            , branch = '0.1.x',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
 
-  -- Tokyonight
-  use 'folke/tokyonight.nvim'
+    -- Tokyonight
+    use 'folke/tokyonight.nvim'
 
-  -- Treesitter
-  use (
-      'nvim-treesitter/nvim-treesitter',
-      {run = ':TSUpdate'}
-  )
+    -- Treesitter
+    use (
+        'nvim-treesitter/nvim-treesitter',
+        {run = ':TSUpdate'}
+    )
 
-  -- LSP
-  use 'neovim/nvim-lspconfig'
+    -- LSP
+    use 'neovim/nvim-lspconfig'
 
+    -- Git
+    use 'tpope/vim-fugitive'
+
+    -- Statusline
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 end)

@@ -1,4 +1,6 @@
 @echo off
+cd ~
+
 REM Check if Chocolatey is installed
 where choco >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
@@ -20,5 +22,10 @@ git clone https://github.com/github/copilot.vim.git %USERPROFILE%\.config\nvim\p
 REM Installing Packer for Neovim
 mkdir %LOCALAPPDATA%\nvim\pack\packer\start
 git clone --depth 1 https://github.com/wbthomason/packer.nvim %LOCALAPPDATA%\nvim\pack\packer\start\packer.nvim
+
+REM Install Nerd Fonts Hack
+choco install nerd-fonts-hack
+
+cd ~
 
 @echo Setup completed!
