@@ -1,39 +1,24 @@
 @echo off
-SETLOCAL
-
-:: Check if Chocolatey is installed
+REM Check if Chocolatey is installed
 where choco >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
     @echo Installing Chocolatey...
-    @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+    @%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 )
 
-:: Install Neovim, Python, NodeJS, ripgrep, and fd
-@echo Installing Neovim, Python, NodeJS, ripgrep, and fd...
-choco install neovim python nodejs ripgrep fd -y
-mkdir "%LOCALAPPDATA%\nvim\autoload" 2>nul
+REM Creating Symlinks for Neovim config
+mklink /D %LOCALAPPDATA%\nvim %USERPROFILE%\.config\nvim
 
-:: Create symlink for init.vim
-@echo Creating symlink for init.vim...
-IF NOT EXIST "%LOCALAPPDATA%\nvim" (
-    mkdir "%LOCALAPPDATA%\nvim"
-)
-mklink "%LOCALAPPDATA%\nvim\init.vim" "%USERPROFILE%\.config\nvim\init.vim"
+REM Installing Neovim, ripgrep, fd, and NodeJS
+choco install neovim ripgrep fd nodejs
 
-:: Set up Python for Neovim
-@echo Setting up Python for Neovim...
-python -m pip install pynvim
-
-:: Install Github Copilot for Neovim
-@echo Installing Github Copilot for Neovim...
-mkdir "%LOCALAPPDATA%\nvim\pack\github\start" 2>nul
-git clone https://github.com/github/copilot.vim.git "%LOCALAPPDATA%\nvim\pack\github\start\copilot.vim"
+REM Installing GitHub Copilot for Neovim
+mkdir %USERPROFILE%\.config\nvim\pack\github\start
+git clone https://github.com/github/copilot.vim.git %USERPROFILE%\.config\nvim\pack\github\start\copilot.vim
 @echo Github Copilot: Start Neovim and invoke :Copilot setup
 
-:: Install Vim-Plug for Neovim
-@echo Installing Vim-Plug for Neovim...
-powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' -OutFile '%LOCALAPPDATA%\nvim\autoload\plug.vim'"
-@echo Vim-Plug installed: Start Neovim and invoke :PlugInstall
+REM Installing Packer for Neovim
+mkdir %LOCALAPPDATA%\nvim\pack\packer\start
+git clone --depth 1 https://github.com/wbthomason/packer.nvim %LOCALAPPDATA%\nvim\pack\packer\start\packer.nvim
 
-ENDLOCAL
-@echo Done!
+@echo Setup completed!

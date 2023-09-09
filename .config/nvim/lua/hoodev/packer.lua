@@ -1,4 +1,9 @@
-vim.cmd [[packadd packer.nvim]]
+if pcall(require, 'packer') then
+   require('packer').init()
+else
+   vim.cmd [[packadd packer.nvim]]
+end
+
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
