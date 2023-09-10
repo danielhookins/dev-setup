@@ -54,3 +54,10 @@ if [ "$OS" == "Darwin" ]; then
 else
     sudo apt-get install -y tmux
 fi
+
+if [ "$OS" == "Darwin" ]; then
+    brew tap homebrew/cask-fonts
+    brew install --cask font-hack-nerd-font
+else    
+    sudo apt-get install -y fonts-hack-nerd-font
+fi
