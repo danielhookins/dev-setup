@@ -12,8 +12,6 @@ require("mason-lspconfig").setup({
         "marksman",
         "pyright",
         "gopls",
-        "clangd",
-        "cmake",
     },
 })
 
