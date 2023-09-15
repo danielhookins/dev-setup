@@ -63,4 +63,8 @@ require("tokyonight").setup({
   end,
 })
 
+vim.cmd[[
+  hi Cursor guifg=#000000 guibg=#ffffff
+]]
+
 vim.cmd[[colorscheme tokyonight]]
