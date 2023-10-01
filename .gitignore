@@ -1,22 +1,13 @@
-.bash_history
-.bash_logout
-.bashrc
-.cache/
-.config/github-copilot/
-.config/nvim/pack/
-.config/nvim/plugin/
-.gitconfig
-.lesshst
-.local/
-.motd_shown
-.npm/
-.profile
-.python_history
-.ssh/
-.sudo_as_admin_successful
-.tmux/
-.vim/
-.viminfo
-.vscode-server/
-.wget-hsts
-dev/
+# ignore everything by default
+/*
+
+# dotfiles
+!.bash_aliases
+!.gitignore
+!.tmux.conf
+!.vimrc
+!.config/
+
+# setup scripts
+!dev-setup/
+!textfiles/
